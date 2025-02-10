@@ -1,0 +1,8 @@
+# Backend IDE and build files
+.idea/
+.gradle/
+build/
+
+# Ignore application.properties
+src/main/resources/application.properties
+
