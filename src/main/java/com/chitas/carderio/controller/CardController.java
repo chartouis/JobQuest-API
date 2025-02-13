@@ -53,7 +53,7 @@ public class CardController {
 
     @PatchMapping("/request")
     public CardCheck evaluate(@RequestBody CardCheck cardCheck){
-        cardService.evaluate(cardCheck);
+        cardService.evaluate(cardCheck, cardCheck.getLocalDateTime());
         return cardCheck;
     }
 

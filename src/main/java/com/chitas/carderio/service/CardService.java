@@ -14,6 +14,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -86,13 +87,14 @@ public class CardService {
         return dtos;
     }
 
-    public void evaluate(CardCheck cardCheck) {
-        updateCard(cardCheck.getCardId(), cardCheck.getIsCorrect());
+    public void evaluate(CardCheck cardCheck, String requestDate) {
+        updateCard(cardCheck.getCardId(), cardCheck.getIsCorrect(), requestDate);
     }
 
-    public CardDTO getStack(LocalDateTime localDateTime) {
+    public CardDTO getStack(String localDateTime) {
+        LocalDateTime date = LocalDateTime.parse(localDateTime, DateTimeFormatter.ISO_DATE_TIME);
         for(Card card: usersRepo.findCardsByUsername(SecurityContextHolder.getContext().getAuthentication().getName())){
-            if (isDue(card,localDateTime)){
+            if (isDue(card,date)){
                 return cardToDto(card);
             }
         }
@@ -123,11 +125,11 @@ public class CardService {
     private static final float[] RELEARNING_INTERVALS_MINUTES = {1, 10, 60}; // 10m → 1h → 1d
     private static final float INITIAL_INTERVAL_DAYS = 0.007f; // Start with 1 day
 
-    public void updateCard(Long cardId, boolean isCorrect) {
+    public void updateCard(Long cardId, boolean isCorrect, String requestDate) {
         Card card = cardsRepo.findById(cardId).orElseThrow();
         Float currentInterval = card.getInterval();
         Integer learningStep = card.getLearningStep();
-
+        LocalDateTime date = LocalDateTime.parse(requestDate, DateTimeFormatter.ISO_DATE_TIME);
         if (isCorrect) {
             if (learningStep > 0) {
                 // Exit relearning phase
@@ -153,7 +155,7 @@ public class CardService {
             }
         }
 
-        card.setLastReviewDate(LocalDateTime.now());
+        card.setLastReviewDate(date);
 
         cardsRepo.save(card);
 
@@ -167,6 +169,7 @@ public class CardService {
         float interval = card.getInterval();
         int learningStep = card.getLearningStep();
         if (lastReviewDate == null) {
+
             card.setLastReviewDate(currentDateTime);
             cardsRepo.save(card);
             return true;
@@ -191,8 +194,9 @@ public class CardService {
     public Progress getProgress(RequestDate requestDate) {
         long learn = 0;
         long know = 0;
+        LocalDateTime date = LocalDateTime.parse(requestDate.getLocalDateTime(), DateTimeFormatter.ISO_DATE_TIME);
         for(Card card : usersRepo.findCardsByUsername(SecurityContextHolder.getContext().getAuthentication().getName())){
-            if (isDue(card, requestDate.getLocalDateTime())){
+            if (isDue(card, date)){
                 learn+=1;
             }else {
                 know+=1;

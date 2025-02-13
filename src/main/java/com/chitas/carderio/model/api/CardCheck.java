@@ -9,4 +9,6 @@ public class CardCheck {
     private Boolean isCorrect;
 
     private Long cardId;
+
+    private String localDateTime;
 }
