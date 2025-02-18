@@ -2,6 +2,7 @@ package com.chitas.carderio.service;
 
 import com.chitas.carderio.model.Card;
 import com.chitas.carderio.model.DTO.CardDTO;
+import com.chitas.carderio.model.User;
 import com.chitas.carderio.model.api.CardCheck;
 import com.chitas.carderio.model.api.Progress;
 import com.chitas.carderio.model.api.RequestDate;
@@ -101,23 +102,23 @@ public class CardService {
         return null;
     }
 
-    public void printOutCard(Card card){
-        if(card.getId() != null)
-            System.out.println("id "+card.getId());
-        if(card.getBack() != null)
-            System.out.println("back "+card.getBack());
-        if(card.getFront() != null)
-            System.out.println("front "+card.getFront());
-        if(card.getUser() != null)
-            System.out.println("user "+card.getUser());
-        if(card.getLastReviewDate() != null)
-            System.out.println("lastr "+card.getLastReviewDate());
-        if(card.getLearningStep() != null)
-            System.out.println("lstep "+card.getLearningStep());
-        if(card.getInterval() != null)
-            System.out.println("intrv "+card.getInterval());
-
-    }
+//    public void printOutCard(Card card){
+//        if(card.getId() != null)
+//            System.out.println("id "+card.getId());
+//        if(card.getBack() != null)
+//            System.out.println("back "+card.getBack());
+//        if(card.getFront() != null)
+//            System.out.println("front "+card.getFront());
+//        if(card.getUser() != null)
+//            System.out.println("user "+card.getUser());
+//        if(card.getLastReviewDate() != null)
+//            System.out.println("lastr "+card.getLastReviewDate());
+//        if(card.getLearningStep() != null)
+//            System.out.println("lstep "+card.getLearningStep());
+//        if(card.getInterval() != null)
+//            System.out.println("intrv "+card.getInterval());
+//
+//    } testing tool
 
 
 
@@ -204,5 +205,17 @@ public class CardService {
         }
 
         return new Progress(learn,know);
+    }
+    //This shit can be hacked if the hacker will somehow send any id they like
+    public CardDTO patchCard(CardDTO newCard) {
+        User user = usersRepo.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName());
+        Card card = cardsRepo.findById(newCard.getId()).orElseThrow();
+        if(!card.getUser().getId().equals(user.getId())){
+            return getDefaultCardDTO();
+        }
+        card.setBack(newCard.getBack());
+        card.setFront(newCard.getFront());
+        cardsRepo.save(card);
+        return newCard;
     }
 }

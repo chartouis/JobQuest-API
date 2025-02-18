@@ -6,26 +6,23 @@ import com.chitas.carderio.model.User;
 import com.chitas.carderio.repo.UsersRepo;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Example;
+
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
+
 import java.time.LocalDateTime;
-import java.time.LocalTime;
-import java.util.Date;
-import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 @Service
 public class UserService {
-    private UsersRepo repo;
-    private AuthenticationManager manager;
-    private JWTService jwtService;
+    private final UsersRepo repo;
+    private final AuthenticationManager manager;
+    private final JWTService jwtService;
     CookieMakerService cook;
 
     @Autowired
@@ -36,7 +33,7 @@ public class UserService {
         this.cook = cook;
     }
 
-    private BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(12);
+    private final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(12);
 
     public UserDTO register(User user){
         if(user.getPassword() == null || !isValidEmail(user.getEmail())){

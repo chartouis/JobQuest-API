@@ -12,16 +12,15 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@SuppressWarnings("unused")
 @RestController
 @RequestMapping("/cards")
 public class CardController {
 
-    private final CardsRepo cardsRepo;
     private final CardService cardService;
 
     @Autowired
     public CardController(CardsRepo cardsRepository, CardService cardService) {
-        this.cardsRepo = cardsRepository;
         this.cardService = cardService;
     }
 
@@ -66,6 +65,11 @@ public class CardController {
     @PostMapping("/request/progress")
     public Progress getProgress(@RequestBody RequestDate requestDate){
         return cardService.getProgress(requestDate);
+    }
+
+    @PatchMapping
+    public CardDTO changeCard(@RequestBody CardDTO newCard){
+        return cardService.patchCard(newCard);
     }
 
 }

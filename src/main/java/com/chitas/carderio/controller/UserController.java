@@ -13,17 +13,17 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+
+@SuppressWarnings("unused")
 @RestController
 @RequestMapping
 public class UserController {
 
-    private final UsersRepo usersRepo;
     private final UserService userService;
 
 
     @Autowired
     public UserController(UsersRepo usersRepo, UserService userService) {
-        this.usersRepo = usersRepo;
         this.userService = userService;
     }
 
