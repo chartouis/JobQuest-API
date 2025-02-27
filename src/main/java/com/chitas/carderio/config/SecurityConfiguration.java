@@ -44,17 +44,26 @@ public class SecurityConfiguration {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http
                 .cors(cors -> cors.configurationSource(corsConfigurationSource()))
-                .csrf(AbstractHttpConfigurer::disable) //.csrf(csrf -> csrf.disable())
+                .csrf(AbstractHttpConfigurer::disable) // Disable CSRF if you're testing APIs
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/register", "/login").permitAll()
-                        .anyRequest().authenticated())
-                //.oauth2Login(Customizer.withDefaults())
-                .httpBasic(withDefaults())
-                .sessionManagement(session -> session
-                        .sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-                .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class)
-                .headers(header -> header.addHeaderWriter(new StaticHeadersWriter("Access-Control-Allow-Origin", "*")))
-                .build();
+                        .anyRequest().permitAll() // Allow all requests without authentication
+                )
+                .formLogin(AbstractHttpConfigurer::disable) // Disable login form
+                .httpBasic(AbstractHttpConfigurer::disable).build(); // Disable basic auth
+
+                //actual security
+//                .cors(cors -> cors.configurationSource(corsConfigurationSource()))
+//                .csrf(AbstractHttpConfigurer::disable) //.csrf(csrf -> csrf.disable())
+//                .authorizeHttpRequests(auth -> auth
+//                        .requestMatchers("/register", "/login").permitAll()
+//                        .anyRequest().authenticated())
+//                //.oauth2Login(Customizer.withDefaults())
+//                .httpBasic(withDefaults())
+//                .sessionManagement(session -> session
+//                        .sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+//                .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class)
+//                .headers(header -> header.addHeaderWriter(new StaticHeadersWriter("Access-Control-Allow-Origin", "*")))
+//                .build();
     }
 
     private CorsConfigurationSource corsConfigurationSource() {

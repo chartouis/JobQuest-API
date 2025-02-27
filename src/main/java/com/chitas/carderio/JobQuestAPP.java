@@ -6,10 +6,10 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
 @SpringBootApplication
 @EnableJpaAuditing
-public class CarderioApplication {
+public class JobQuestAPP {
 
 	public static void main(String[] args) {
-		SpringApplication.run(CarderioApplication.class, args);
+		SpringApplication.run(JobQuestAPP.class, args);
 	}
 
 }

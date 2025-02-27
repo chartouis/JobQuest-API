@@ -32,7 +32,5 @@ public class User {
     @CreatedDate
     private LocalDateTime createdAt;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<Card> cards;
 
 }
