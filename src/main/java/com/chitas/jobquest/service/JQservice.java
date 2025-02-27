@@ -1,7 +1,7 @@
-package com.chitas.carderio.service;
+package com.chitas.jobquest.service;
 
-import com.chitas.carderio.model.api.AIResponse;
-import com.chitas.carderio.model.api.Career;
+import com.chitas.jobquest.model.api.AIResponse;
+import com.chitas.jobquest.model.api.Career;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.Unirest;

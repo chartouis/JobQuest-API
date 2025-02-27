@@ -1,7 +1,7 @@
-package com.chitas.carderio.controller;
+package com.chitas.jobquest.controller;
 
-import com.chitas.carderio.model.api.Career;
-import com.chitas.carderio.service.JQservice;
+import com.chitas.jobquest.model.api.Career;
+import com.chitas.jobquest.service.JQservice;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

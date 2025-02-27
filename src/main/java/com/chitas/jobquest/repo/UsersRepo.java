@@ -1,12 +1,8 @@
-package com.chitas.carderio.repo;
+package com.chitas.jobquest.repo;
 
-import com.chitas.carderio.model.User;
+import com.chitas.jobquest.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
-
-import java.util.List;
 
 @Repository
 public interface UsersRepo extends JpaRepository<User, Long> {

@@ -1,4 +1,4 @@
-package com.chitas.carderio.model.DTO;
+package com.chitas.jobquest.model.DTO;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

@@ -2,7 +2,7 @@
 services:
   app:
     build: .
-    container_name: carderio
+    container_name: jobquest
     ports:
       - ${PORT:8080}
     environment:

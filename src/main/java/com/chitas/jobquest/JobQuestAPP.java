@@ -1,4 +1,4 @@
-package com.chitas.carderio;
+package com.chitas.jobquest;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

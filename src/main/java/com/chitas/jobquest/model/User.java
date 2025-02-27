@@ -1,4 +1,4 @@
-package com.chitas.carderio.model;
+package com.chitas.jobquest.model;
 
 
 import jakarta.persistence.*;
@@ -7,7 +7,6 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDateTime;
-import java.util.Set;
 
 @Data
 @Entity

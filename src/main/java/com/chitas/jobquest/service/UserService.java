@@ -1,9 +1,9 @@
-package com.chitas.carderio.service;
+package com.chitas.jobquest.service;
 
-import com.chitas.carderio.model.DTO.UserDTO;
-import com.chitas.carderio.model.JWT;
-import com.chitas.carderio.model.User;
-import com.chitas.carderio.repo.UsersRepo;
+import com.chitas.jobquest.model.DTO.UserDTO;
+import com.chitas.jobquest.model.JWT;
+import com.chitas.jobquest.model.User;
+import com.chitas.jobquest.repo.UsersRepo;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 

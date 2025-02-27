@@ -1,4 +1,4 @@
-package com.chitas.carderio.model;
+package com.chitas.jobquest.model;
 
 import lombok.Data;
 

@@ -1,8 +1,7 @@
-package com.chitas.carderio.config;
+package com.chitas.jobquest.config;
 
-import com.chitas.carderio.model.UserPrincipal;
-import com.chitas.carderio.service.CarderioUserDetailsService;
-import com.chitas.carderio.service.JWTService;
+import com.chitas.jobquest.service.CarderioUserDetailsService;
+import com.chitas.jobquest.service.JWTService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

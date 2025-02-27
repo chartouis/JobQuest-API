@@ -1,4 +1,4 @@
-package com.chitas.carderio;
+package com.chitas.jobquest;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

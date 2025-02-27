@@ -1,4 +1,4 @@
-package com.chitas.carderio.model.api;
+package com.chitas.jobquest.model.api;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;

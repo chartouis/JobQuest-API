@@ -1,8 +1,8 @@
-package com.chitas.carderio.service;
+package com.chitas.jobquest.service;
 
-import com.chitas.carderio.model.User;
-import com.chitas.carderio.model.UserPrincipal;
-import com.chitas.carderio.repo.UsersRepo;
+import com.chitas.jobquest.model.User;
+import com.chitas.jobquest.model.UserPrincipal;
+import com.chitas.jobquest.repo.UsersRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

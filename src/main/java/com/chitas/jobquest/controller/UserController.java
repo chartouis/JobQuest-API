@@ -1,11 +1,11 @@
-package com.chitas.carderio.controller;
+package com.chitas.jobquest.controller;
 
 
-import com.chitas.carderio.model.DTO.UserDTO;
-import com.chitas.carderio.model.JWT;
-import com.chitas.carderio.model.User;
-import com.chitas.carderio.repo.UsersRepo;
-import com.chitas.carderio.service.UserService;
+import com.chitas.jobquest.model.DTO.UserDTO;
+import com.chitas.jobquest.model.JWT;
+import com.chitas.jobquest.model.User;
+import com.chitas.jobquest.repo.UsersRepo;
+import com.chitas.jobquest.service.UserService;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
