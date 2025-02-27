@@ -63,7 +63,7 @@ public class SecurityConfiguration {
 
     private CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(List.of("https://carderio-web.vercel.app", "http://localhost:5173"));
+        configuration.setAllowedOrigins(List.of("https://job-quest-web-kappa.vercel.app/", "http://localhost:5173"));
         configuration.setAllowedMethods(List.of("*"));
         configuration.setAllowCredentials(true);
         configuration.setAllowedHeaders(List.of("*"));
